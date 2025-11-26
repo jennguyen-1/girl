@@ -69,31 +69,8 @@ function showSlides(n) {
    $( "#dialog3" ).dialog( "open" );
 });
 
-// form submission
-  const form = document.getElementById("contact-form");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
 
-    const data = {
-      message: form.message.value,
-    };
 
-    try {
-      await fetch("https://script.google.com/macros/s/AKfycbxwmA8dSqRPBLQ4je6yl80WrY_cZlIxSUQNz33HQEpLJEDaCROxaybpY0aeAN252U1V/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      alert("Message sent successfully!");
-      form.reset();
-    } catch (err) {
-      alert("Something went wrong. Please try again.");
-    }
-  });
-  // form submission end
 
   // typing text main websitte
   // var typed = new Typed('#typed', {
