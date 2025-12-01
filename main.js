@@ -12,6 +12,7 @@ $( function() {
 });
   } );
 
+
 // girl as doll/dog dialog
   $( "#dialog1" ).dialog({ 
     autoOpen: false, 
@@ -60,19 +61,26 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-// mirror dialog
-  $( "#dialog3" ).dialog({ 
-    autoOpen: false, 
-    position: { my: "left+10% top-75%", at: "center", of: opener3 }
-  });
-  $( "#opener3" ).click(function() {
-   $( "#dialog3" ).dialog( "open" );
-});
 
+//form submission behavior
 window.addEventListener("load", function() {
-  const form = document.getElementById('my-form');
+  const form = document.getElementById('contact-form');
+  const submitBtn= document.getElementById('submitbtn');
+  const input = form.querySelector('textarea[name="girltext"]');
+
+  submitBtn.disabled=true;
+
+  input.addEventListener('input', function(){
+    submitBtn.disabled = input.value.trim() === "";
+  });
+
   form.addEventListener("submit", function(e) {
     e.preventDefault();
+
+    if (input.value.trim()==="") return;
+    submitBtn.disabled=true;
+    submitBtn.textContent="sending...";
+
     const data = new FormData(form);
     const action = e.target.action;
     fetch(action, {
@@ -80,67 +88,48 @@ window.addEventListener("load", function() {
       body: data,
     })
     .then(() => {
-      alert("Success!");
+      alert("yayyy");
+      form.reset();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "send";
     })
+  
   });
 });
 
+//typed.js stuff 
 
-  // typing text main websitte
-  // var typed = new Typed('#typed', {
-  //   stringsElement: '#typed-strings',
-  //   typeSpeed: 20,
-  // });
+  // radomizing order, this is getting all of the .girl elements
+const girls = Array.from(document.querySelectorAll('.girl'));
 
-  //  var typed = new Typed('#typed2', {
-  //   stringsElement: '#typed-strings2'
-  // });
+// shuffle array
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
 
-  //    var typed = new Typed('#typed3', {
-  //   stringsElement: '#typed-strings3',
-  //   typeSpeed:50,
-  // });
+const shuffledGirls = shuffle(girls);
 
-  const typedConfigs = [
-  {
-    id: '#typed',
-    strings: '#typed-strings',
-    speed: 20
-  },
-  {
-    id: '#typed2',
-    strings: '#typed-strings2',
-    speed: 20
-  },
-  {
-    id: '#typed3',
-    strings: '#typed-strings3',
-    speed: 50
-  },
-  {
-    id: '#typed4',
-    strings: '#typed-strings4',
-    speed: 50
-  },
-  {
-    id: '#typed5',
-    strings: '#typed-strings5',
-    speed: 50
-  }
-];
+// loop through shuffled elements and start typed.js
+shuffledGirls.forEach((girl, index) => {
+  const span = girl.querySelector('.typed-output');
+  const stringsEl = girl.querySelector('.typed-strings');
 
-// Shuffle array for random order
-typedConfigs.sort(() => Math.random() - 0.5);
-
-//loop through them and start each with a delay
-typedConfigs.forEach((config, index) => {
+  
+let topZ = 1;
+  // delay sentences
   setTimeout(() => {
-        const el = document.querySelector(config.id);
-    el.style.zIndex = index + 1;
+ girl.classList.add("active");
+  girl.style.zIndex = topZ++;
 
-    new Typed(config.id, {
-      stringsElement: config.strings,
-      typeSpeed: config.speed
+    span.style.opacity = 1;
+    new Typed(span, {
+      stringsElement: stringsEl,
+      typeSpeed: 40,
+      backSpeed: 40,
+      smartBackspace: true,
+      backDelay: 15000,
+      loop: false,
     });
-  }, index * 2000); // 2-second delay between each
-});
+  }, index * 10000); // 10 second delay between sentences
+}); 
+

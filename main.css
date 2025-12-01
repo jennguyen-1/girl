@@ -2,8 +2,29 @@
     box-sizing:border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
+body{
+    background-image: url(mymedia/girlwebbackground2.jpg) ;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    overflow: hidden;
+}
+
 img {
     max-width:100%;
+}
+
+.update{
+  position: fixed;
+  bottom: 0;
+  mix-blend-mode: overlay;
+
 }
 
 .inline {
@@ -17,6 +38,26 @@ img {
 
 .press:hover {
     color: blue;
+}
+
+.ui-dialog { 
+  max-width: 700px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+.welcomepiccontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.welcomepic {
+  width: 60%;
+  margin-bottom: -35px;
+}
+
+textarea {
+  min-width: 30%;
 }
 
 /* for the video */
@@ -111,50 +152,192 @@ img {
 
 a {
     color: inherit;
-    text-decoration:none;
+    text-decoration:underline;
 }
 
-.container {
-    position: relative;
+.hide {
+  visibility: hidden; 
 }
 
-.pair1 {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    max-width: 50vw;
-    color:rgb(255, 255, 255);
-    text-shadow:rgb(255, 0, 170) 0px 0px 21px;
-    background: white;
-    box-shadow: 0 0 40px 20px white;
+#typing-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
 }
 
-.pair2 {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    max-width: 50vw;
-    color:rgb(255, 255, 255);
-    text-shadow:rgba(21,23,41,1) 0px 0px 21px;
-    background: white;
-    box-shadow: 0 0 40px 20px white;
+.girl {
+  position: absolute;
+  overflow-wrap: break-word;
+  padding: 20px;
+  max-width:500px;
+  color: black;
+  mix-blend-mode: overlay ;
+  /* text-shadow:rgba(255,255,255,1) 0px 0px 22px; */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  background: transparent;
+  
 }
 
-.pair3 {
-    position: absolute;
-    top: 60%;
-    left: 10%;
-    max-width: 50vw;
-    color:rgb(255, 255, 255);
-    text-shadow:rgb(255, 0, 170) 0px 0px 21px;
-    background: white;
-    box-shadow: 0 0 40px 20px white;
+.girl:hover {
+  color: rgb(255, 253, 240);
+  mix-blend-mode: screen;
+  text-shadow: rgba(255,219,158,1) 0px 0px 14px;
+
 }
 
-#typed-strings,
-#typed-strings2,
-#typed-strings3,
-#typed-strings4,
-#typed-strings5 {
-  display: none;
+
+#pair2 {
+  left: 70%;
+  top: 70%;
+}
+
+#pair3 {
+  left: 35%;
+  top: 55%;
+}
+
+#pair4 {
+  left: 10%;
+  top: 70%;
+}
+
+#pair5 {
+  left: 30%;
+  top: 75%;
+}
+
+#pair6 {
+  left:5%;
+  top: 15%;
+}
+
+#pair7 {
+  left:50%;
+  top: 50%;
+}
+
+#pair8 {
+  left:0%;
+  top: 50%;
+}
+
+#pair9 {
+  left:60%;
+  top: 30%;
+}
+
+#pair10 {
+  left:0%;
+  top: 20%;
+}
+
+#pair11 {
+  left:65%;
+  top: 30%;
+}
+
+#pair12 {
+  left: 40%;
+  top: 40%;
+}
+
+#pair13 {
+  left:30%;
+  top: 50%;
+}
+
+#pair14 {
+  left:50%;
+  top: 20%;
+}
+
+#pair15 {
+  left:10%;
+  top: 30%;
+}
+
+#pair16 {
+  left:50%;
+  top: 10%;
+}
+
+#pair17 {
+  left:5%;
+  top: 80%;
+}
+
+#pair18 {
+  left:40%;
+  top: 5%;
+}
+
+#pair19 {
+  left:0%;
+  top: 0%;
+}
+
+#pair20 {
+  left:15%;
+  top: 45%;
+}
+
+#pair21 {
+  left:50%;
+  top: 0%;
+}
+
+#pair22 {
+  left: 40%;
+  top: 20%;
+}
+
+#pair23 {
+  left:10%;
+  top: 45%;
+}
+
+#pair24 {
+  left:50%;
+  top: 30%;
+}
+
+#pair25 {
+  left:35%;
+  top: 10%;
+}
+
+#pair26 {
+  left:0%;
+  top: 55%;
+}
+
+#pair27 {
+  left:45%;
+  top: 10%;
+}
+
+#pair28 {
+  left:70%;
+  top: 5%;
+}
+
+#pair29 {
+  left:50%;
+  top: 5%;
+}
+
+@media screen and (max-width: 600px) {
+.ui-dialog { 
+  font-size: .7rem;
+}
+
+.girl {
+  font-size: .7rem;
+}
+
+.welcomepic {
+  margin-bottom: -25px;
+}
+
 }
